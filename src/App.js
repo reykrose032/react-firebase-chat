@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
 /* eslint-disable no-unused-vars */
 import React, { useState, useRef } from 'react';
 import './App.css';
@@ -30,7 +31,7 @@ function App() {
   return ( 
     <div className="App">
       <header className="App-header">
-        <h1>⚛️🔥💬</h1>
+        <h1>🦆💬</h1>
         <SignOut />
       </header>
       <section>
@@ -53,13 +54,13 @@ function SignIn() {
 
 function SignOut() {
   return auth.currentUser && (
-    <button onCLick={() => auth.SignOut()}>Signout</button>
+    <button onClick={() => auth.SignOut()}>Signout</button>
   )
 }
 
 function ChatRoom() {
   const messagesRef = firestore.collection('messages');
-  const query = messagesRef.orderBy('createdAt').limit(25);
+  const query = messagesRef.orderBy('createdAt').limitToLast(20)
 
   const [messages] = useCollectionData(query, {idField: 'id'});
   const [formValue, setFormValue] = useState('');
