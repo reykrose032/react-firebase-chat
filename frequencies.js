@@ -1,5 +1,5 @@
-let baseFrequency = 220;
-const phi = 1.618033988749887;
+let baseFrequency = 1;
+const phi = 0.618033988749887;
 const harmonics = 8;
 
 
