@@ -7,6 +7,8 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
+import crypto from 'crypto';
+
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
@@ -22,6 +24,12 @@ firebase.initializeApp({
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
+
+const userCrypto = crypto.getDiffieHellman('modp15');
+userCrypto.generateKeys();
+console.log('userPublicKey: ', userCrypto.getPublicKey());
+console.log(userCrypto.computeSecret(userCrypto.getPublicKey(), 'hex'));
+console.log(userCrypto.getPrivateKey());
 
 function App() {
 
